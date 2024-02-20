@@ -194,7 +194,7 @@ public class teacherDashboard extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(33, 150, 243));
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(33, 150, 243));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Student Record Card");
         jLabel5.setVerifyInputWhenFocusTarget(false);
@@ -217,7 +217,11 @@ public class teacherDashboard extends javax.swing.JFrame {
                 dashboardMouseClicked(evt);
             }
         });
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         dashboard.addTab("tab1", null, jTabbedPane1, "");
+
+        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         dashboard.addTab("tab2", jTabbedPane2);
         dashboard.addTab("tab3", jTabbedPane3);
         dashboard.addTab("tab4", jTabbedPane4);
