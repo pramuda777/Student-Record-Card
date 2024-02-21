@@ -37,7 +37,7 @@ public class studentRegistration extends javax.swing.JFrame {
         jTextField_phone.setBorder(field_border);
         jTextField_fullname.setBorder(field_border);
 
-        jPasswordField_password.setBorder(field_border);
+        jTextField_parentName.setBorder(field_border);
         jPasswordField_confirmpassword.setBorder(field_border);
         
         //create the button group for the radio buttons.
@@ -68,7 +68,7 @@ public class studentRegistration extends javax.swing.JFrame {
         jRadioButton_male = new javax.swing.JRadioButton();
         jRadioButton_female = new javax.swing.JRadioButton();
         jPasswordField_confirmpassword = new javax.swing.JPasswordField();
-        jPasswordField_password = new javax.swing.JPasswordField();
+        jTextField_parentName = new javax.swing.JPasswordField();
         jTextField_phone = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -77,8 +77,14 @@ public class studentRegistration extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jButton_login = new javax.swing.JButton();
         jButton_login1 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jPasswordField_password = new javax.swing.JPasswordField();
+        jTextField_nic = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -118,14 +124,11 @@ public class studentRegistration extends javax.swing.JFrame {
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 150));
 
         jPanel3.setBackground(new java.awt.Color(22, 103, 183));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField_username.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jPanel3.add(jTextField_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 340, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 204));
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 404, -1, -1));
 
         jTextField_fullname.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jTextField_fullname.addActionListener(new java.awt.event.ActionListener() {
@@ -133,23 +136,28 @@ public class studentRegistration extends javax.swing.JFrame {
                 jTextField_fullnameActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField_fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 340, 30));
 
         jRadioButton_male.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jRadioButton_male.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton_male.setText("Male");
-        jPanel3.add(jRadioButton_male, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 467, -1, -1));
+        jRadioButton_male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_maleActionPerformed(evt);
+            }
+        });
 
         jRadioButton_female.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jRadioButton_female.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton_female.setText("Female");
-        jPanel3.add(jRadioButton_female, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 467, -1, -1));
+        jRadioButton_female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_femaleActionPerformed(evt);
+            }
+        });
 
         jPasswordField_confirmpassword.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jPanel3.add(jPasswordField_confirmpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 345, 39));
 
-        jPasswordField_password.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jPanel3.add(jPasswordField_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 345, 41));
+        jTextField_parentName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
 
         jTextField_phone.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jTextField_phone.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +170,6 @@ public class studentRegistration extends javax.swing.JFrame {
                 jTextField_phoneKeyTyped(evt);
             }
         });
-        jPanel3.add(jTextField_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 345, 44));
 
         jPanel2.setBackground(new java.awt.Color(33, 150, 243));
 
@@ -190,29 +197,47 @@ public class studentRegistration extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Gender :");
 
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Birthday :");
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Parent Name :");
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Parent NIC No :");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addGap(105, 105, 105)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel10))
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel6)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(55, 55, 55)
+                                    .addComponent(jLabel10))
+                                .addComponent(jLabel5)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(75, 75, 75)
+                                    .addComponent(jLabel9))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGap(23, 23, 23)
+                                    .addComponent(jLabel13))))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -222,18 +247,22 @@ public class studentRegistration extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(93, 93, 93)
-                .addComponent(jLabel10)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel9)
-                .addGap(25, 25, 25)
                 .addComponent(jLabel6)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel8)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel5)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel9)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
-
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 180, 500));
 
         jButton_login.setBackground(new java.awt.Color(22, 103, 183));
         jButton_login.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
@@ -253,7 +282,6 @@ public class studentRegistration extends javax.swing.JFrame {
                 jButton_loginActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, 110, -1));
 
         jButton_login1.setBackground(new java.awt.Color(22, 103, 183));
         jButton_login1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
@@ -273,9 +301,80 @@ public class studentRegistration extends javax.swing.JFrame {
                 jButton_login1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_login1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 520, 110, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 670));
+        jPasswordField_password.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+
+        jTextField_nic.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(jLabel4))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField_fullname, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_username, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jRadioButton_male)
+                        .addGap(16, 16, 16)
+                        .addComponent(jRadioButton_female))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_parentName, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_nic, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField_password, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField_confirmpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jButton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton_login1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(404, 404, 404)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jTextField_fullname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextField_username, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton_male)
+                            .addComponent(jRadioButton_female))
+                        .addGap(16, 16, 16)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextField_parentName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextField_nic, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jPasswordField_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jPasswordField_confirmpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextField_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_login)
+                            .addComponent(jButton_login1)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -331,6 +430,14 @@ public class studentRegistration extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_login1ActionPerformed
 
+    private void jRadioButton_maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_maleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton_maleActionPerformed
+
+    private void jRadioButton_femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_femaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton_femaleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -370,15 +477,19 @@ public class studentRegistration extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_login;
     private javax.swing.JButton jButton_login1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_Selection;
     private javax.swing.JPanel jPanel2;
@@ -389,6 +500,8 @@ public class studentRegistration extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton_female;
     private javax.swing.JRadioButton jRadioButton_male;
     private javax.swing.JTextField jTextField_fullname;
+    private javax.swing.JPasswordField jTextField_nic;
+    private javax.swing.JPasswordField jTextField_parentName;
     private javax.swing.JTextField jTextField_phone;
     private javax.swing.JTextField jTextField_username;
     // End of variables declaration//GEN-END:variables
