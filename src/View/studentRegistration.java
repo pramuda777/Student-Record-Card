@@ -5,9 +5,12 @@
 package View;
 import java.awt.Color;
 import java.awt.Frame;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -408,6 +411,23 @@ public class studentRegistration extends javax.swing.JFrame {
 
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
         // TODO add your handling code here:
+        
+       jTextField_fullname.setText("");
+       jTextField_username.setText("");
+       jTextField_phone.setText("");
+       
+       jTextField_parentName.setText("");
+       jTextField_nic.setText("");
+       jPasswordField_password.setText("");
+       jPasswordField_confirmpassword.setText("");
+       jDateChooser_birthDay.setDate(null); // Clear JCalendar
+       
+       ButtonGroup buttonGroup = new ButtonGroup();
+       buttonGroup.add(jRadioButton_male);
+       buttonGroup.add(jRadioButton_female);
+       buttonGroup.clearSelection(); // Clear radio buttons
+
+        
     }//GEN-LAST:event_jButton_loginActionPerformed
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
@@ -424,9 +444,30 @@ public class studentRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_login1MouseExited
 
     private void jButton_login1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_login1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_login1ActionPerformed
+       if(!new String(jPasswordField_password.getPassword()).equals(new String(jPasswordField_confirmpassword.getPassword()))){
+           JOptionPane.showMessageDialog(this,"your Passsword Does Not Match!");
+       }
+       if(isValidPhoneNumber(jTextField_phone.getText())) {
+            //JOptionPane.showMessageDialog(this,"Valid phone number");
+       } else {
+           JOptionPane.showMessageDialog(this,"invalid phone number");
+       }
 
+       
+    }//GEN-LAST:event_jButton_login1ActionPerformed
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        // Regular expression to match a 10-digit phone number
+        String regex = "\\d{10}";
+
+        // Compile the regex pattern
+        Pattern pattern = Pattern.compile(regex);
+
+        // Create a matcher object
+        Matcher matcher = pattern.matcher(phoneNumber);
+
+        // Check if the phone number matches the regex pattern
+        return matcher.matches();
+    }
     private void jRadioButton_maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_maleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton_maleActionPerformed
