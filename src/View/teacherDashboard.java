@@ -47,11 +47,14 @@ public class teacherDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         dashboard = new javax.swing.JTabbedPane();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
-        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rSTableMetro1 = new rojerusan.RSTableMetro();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -218,24 +221,42 @@ public class teacherDashboard extends javax.swing.JFrame {
             }
         });
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        dashboard.addTab("tab1", null, jTabbedPane1, "");
+        jPanel9.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dashboard.addTab("tab2", jPanel9);
 
-        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
-        dashboard.addTab("tab2", jTabbedPane2);
-        dashboard.addTab("tab3", jTabbedPane3);
-        dashboard.addTab("tab4", jTabbedPane4);
-        dashboard.addTab("tab5", jTabbedPane5);
+        jPanel7.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("jButton1");
+        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, -1, -1));
+
+        rSTableMetro1.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        rSTableMetro1.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(rSTableMetro1);
+        rSTableMetro1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 570, 400));
+
+        dashboard.addTab("tab1", jPanel7);
+
+        jPanel10.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dashboard.addTab("tab3", jPanel10);
+
+        jPanel11.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dashboard.addTab("tab4", jPanel11);
+
+        jPanel12.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dashboard.addTab("tab5", jPanel12);
 
         getContentPane().add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 800, 560));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dashboardMouseClicked
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
@@ -307,6 +328,10 @@ public class teacherDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jLabel10MousePressed
 
+    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dashboardMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -345,6 +370,7 @@ public class teacherDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane dashboard;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -356,16 +382,18 @@ public class teacherDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private rojerusan.RSTableMetro rSTableMetro1;
     // End of variables declaration//GEN-END:variables
 }

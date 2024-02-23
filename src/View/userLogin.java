@@ -1,6 +1,7 @@
 package View;
 
 
+import Controller.loginController;
 import java.awt.Color;
 import java.awt.Frame;
 import javax.swing.border.Border;
@@ -66,7 +67,7 @@ public class userLogin extends javax.swing.JFrame {
         jTextField_username = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
         jButton_login = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox_role = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -138,10 +139,10 @@ public class userLogin extends javax.swing.JFrame {
         });
         jPanel3.add(jButton_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 108, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(22, 103, 183));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teacher", "Parent", "Student" }));
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 145, 41));
+        jComboBox_role.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jComboBox_role.setForeground(new java.awt.Color(22, 103, 183));
+        jComboBox_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teacher", "Parent", "Student" }));
+        jPanel3.add(jComboBox_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 145, 41));
 
         jPanel2.setBackground(new java.awt.Color(33, 150, 243));
 
@@ -304,6 +305,7 @@ public class userLogin extends javax.swing.JFrame {
 
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
         // TODO add your handling code here:
+        loginController.login(jComboBox_role.getSelectedItem().toString(),jTextField_username.getText(), jPasswordField.getText());
     }//GEN-LAST:event_jButton_loginActionPerformed
 
     /**
@@ -344,7 +346,7 @@ public class userLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_login;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox_role;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
