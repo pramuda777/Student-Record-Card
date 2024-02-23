@@ -1,6 +1,7 @@
 package View;
 
 
+import Controller.loginController;
 import java.awt.Color;
 import java.awt.Frame;
 import javax.swing.border.Border;
@@ -66,14 +67,14 @@ public class userLogin extends javax.swing.JFrame {
         jTextField_username = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
         jButton_login = new javax.swing.JButton();
-        jLabel_Selection = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox_role = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel_Selection = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -98,7 +99,7 @@ public class userLogin extends javax.swing.JFrame {
                 jTextField_usernameActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 204, 45));
+        jPanel3.add(jTextField_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 204, 45));
 
         jPasswordField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jPasswordField.setForeground(new java.awt.Color(22, 103, 183));
@@ -116,7 +117,7 @@ public class userLogin extends javax.swing.JFrame {
                 jPasswordFieldActionPerformed(evt);
             }
         });
-        jPanel3.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 204, 49));
+        jPanel3.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 204, 49));
 
         jButton_login.setBackground(new java.awt.Color(22, 103, 183));
         jButton_login.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
@@ -136,18 +137,12 @@ public class userLogin extends javax.swing.JFrame {
                 jButton_loginActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 108, -1));
+        jPanel3.add(jButton_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 108, -1));
 
-        jLabel_Selection.setBackground(new java.awt.Color(255, 204, 255));
-        jLabel_Selection.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        jLabel_Selection.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_Selection.setText("HI! Please Select Who You Are");
-        jPanel3.add(jLabel_Selection, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 40));
-
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(22, 103, 183));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teacher", "Parent", "Student" }));
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 145, 41));
+        jComboBox_role.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jComboBox_role.setForeground(new java.awt.Color(22, 103, 183));
+        jComboBox_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teacher", "Parent", "Student" }));
+        jPanel3.add(jComboBox_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 145, 41));
 
         jPanel2.setBackground(new java.awt.Color(33, 150, 243));
 
@@ -168,17 +163,17 @@ public class userLogin extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 350));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 530, 350));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 530, 310));
 
         jPanel4.setBackground(new java.awt.Color(12, 20, 25));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -196,9 +191,16 @@ public class userLogin extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/logO.png"))); // NOI18N
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, 70));
 
+        jLabel_Selection.setBackground(new java.awt.Color(255, 204, 255));
+        jLabel_Selection.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel_Selection.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Selection.setText("HI! Please Select Who You Are");
+        jPanel4.add(jLabel_Selection, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 150));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_loginMouseExited
@@ -303,6 +305,7 @@ public class userLogin extends javax.swing.JFrame {
 
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
         // TODO add your handling code here:
+        loginController.login(jComboBox_role.getSelectedItem().toString(),jTextField_username.getText(), jPasswordField.getText());
     }//GEN-LAST:event_jButton_loginActionPerformed
 
     /**
@@ -343,7 +346,7 @@ public class userLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_login;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox_role;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

@@ -223,7 +223,7 @@ public class studentDashboard extends javax.swing.JFrame {
         dashboard.addTab("tab4", jTabbedPane4);
         dashboard.addTab("tab5", jTabbedPane5);
 
-        getContentPane().add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 800, 560));
+        getContentPane().add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 800, 590));
 
         pack();
         setLocationRelativeTo(null);
