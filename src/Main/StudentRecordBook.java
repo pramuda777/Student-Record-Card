@@ -5,6 +5,8 @@
  */
 package Main;
 
+import View.UserLogin;
+
 /**
  *
  * @author Pramuda Heshan
@@ -16,6 +18,7 @@ public class StudentRecordBook {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new UserLogin().setVisible(true);
     }
     
 }

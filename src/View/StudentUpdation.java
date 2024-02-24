@@ -14,36 +14,36 @@ import java.util.regex.Pattern;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author sachi
  */
-public class StudentRegistration extends javax.swing.JFrame {
+public class StudentUpdation extends javax.swing.JFrame {
 
+    // Data of the selected student
+    private String[] studentData;
     /**
      * Creates new form RegisterForm
      */
-    public StudentRegistration() {
+    public StudentUpdation(String[] studentData) {
+        this.studentData = studentData;
         initComponents();
+        populateFields();
         //center form
         this.setLocationRelativeTo(null);
-        //create yellow border for the jPanel_title 
-        Border jPanel_title_border=BorderFactory.createMatteBorder(0, 1, 1, 1, Color.white);
-        //seet the border to the jPanel_title
-
-        
         
 
-        
          //create the border for the text and password field
         Border field_border=BorderFactory.createMatteBorder(1, 1, 1, 1,  Color.white);
         jTextField_username.setBorder(field_border);
         jTextField_fullname.setBorder(field_border);
         jTextField_phone.setBorder(field_border);
         jTextField_fullname.setBorder(field_border);
-
         jTextField_parentName.setBorder(field_border);
         jPasswordField_confirmpassword.setBorder(field_border);
         
@@ -68,6 +68,7 @@ public class StudentRegistration extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel_Selection = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel_studentID = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jTextField_username = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -87,7 +88,7 @@ public class StudentRegistration extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButton_login = new javax.swing.JButton();
-        jButton_login1 = new javax.swing.JButton();
+        jButton_update = new javax.swing.JButton();
         jDateChooser_birthDay = new com.toedter.calendar.JDateChooser();
         jPasswordField_password = new javax.swing.JPasswordField();
         jTextField_nic = new javax.swing.JTextField();
@@ -116,8 +117,8 @@ public class StudentRegistration extends javax.swing.JFrame {
         jLabel_Selection.setBackground(new java.awt.Color(255, 204, 255));
         jLabel_Selection.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel_Selection.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_Selection.setText("Student Registration Form");
-        jPanel4.add(jLabel_Selection, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
+        jLabel_Selection.setText("Update Student");
+        jPanel4.add(jLabel_Selection, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/minimum_32px.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -127,6 +128,10 @@ public class StudentRegistration extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jLabel_studentID.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_studentID.setText("ID");
+        jPanel4.add(jLabel_studentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 150));
 
@@ -299,36 +304,31 @@ public class StudentRegistration extends javax.swing.JFrame {
         });
         jPanel3.add(jButton_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 528, 110, -1));
 
-        jButton_login1.setBackground(new java.awt.Color(22, 103, 183));
-        jButton_login1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jButton_login1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_login1.setText("Register");
-        jButton_login1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton_login1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton_update.setBackground(new java.awt.Color(22, 103, 183));
+        jButton_update.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jButton_update.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_update.setText("Update");
+        jButton_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton_login1MouseEntered(evt);
+                jButton_updateMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton_login1MouseExited(evt);
+                jButton_updateMouseExited(evt);
             }
         });
-        jButton_login1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_login1ActionPerformed(evt);
+                jButton_updateActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_login1, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 528, 110, -1));
+        jPanel3.add(jButton_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 528, 110, -1));
         jPanel3.add(jDateChooser_birthDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 200, 30));
 
         jPasswordField_password.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jPanel3.add(jPasswordField_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 340, 30));
 
         jTextField_nic.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jTextField_nic.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_nicActionPerformed(evt);
-            }
-        });
         jPanel3.add(jTextField_nic, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 340, 30));
 
         jTextField_parentName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -373,90 +373,68 @@ public class StudentRegistration extends javax.swing.JFrame {
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
         // TODO add your handling code here:
         reset();
-        // Clear radio buttons
-
-        
+   
     }//GEN-LAST:event_jButton_loginActionPerformed
-private void reset() {                                              
-        // TODO add your handling code here:
-        
-       jTextField_fullname.setText("");
-       jTextField_username.setText("");
-       jTextField_phone.setText("");
-       
-       jTextField_parentName.setText("");
-       jTextField_nic.setText("");
-       jPasswordField_password.setText("");
-       jPasswordField_confirmpassword.setText("");
-       jDateChooser_birthDay.setDate(null); // Clear JCalendar
-       
-       ButtonGroup buttonGroup = new ButtonGroup();
-       buttonGroup.add(jRadioButton_male);
-       buttonGroup.add(jRadioButton_female);
-       buttonGroup.clearSelection(); // Clear radio buttons
 
-        
-    }
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
         // TODO add your handling code here:
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jLabel3MousePressed
 
-    private void jButton_login1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_login1MouseEntered
+    private void jButton_updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_updateMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_login1MouseEntered
+    }//GEN-LAST:event_jButton_updateMouseEntered
 
-    private void jButton_login1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_login1MouseExited
+    private void jButton_updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_updateMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_login1MouseExited
+    }//GEN-LAST:event_jButton_updateMouseExited
 
-    private void jButton_login1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_login1ActionPerformed
+    private void jButton_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_updateActionPerformed
         if (!isFormFullyFilled()) {
             JOptionPane.showMessageDialog(this, "Please fill in all the fields!");
-        } else if (!isValidPhoneNumber(jTextField_phone.getText())) {
-            JOptionPane.showMessageDialog(this,"Invalid Phone Number!");
-        } else if (!new String(jPasswordField_password.getPassword()).equals(new String(jPasswordField_confirmpassword.getPassword()))) {
-            JOptionPane.showMessageDialog(this,"Your Passwords Do Not Match!");
         } else {
             try {
-                // Proceed with registration since the form is fully filled
-                if(insertStudentData()){
-                    JOptionPane.showMessageDialog(this,"Data inserted successfully");
-                    reset();
-                    
-                } 
-                
+                if (updateStudentRecord()) {
+                    JOptionPane.showMessageDialog(this, "Student record updated successfully");
+                    dispose(); // Close the update form
+                }
             } catch (SQLException ex) {
-                Logger.getLogger(StudentRegistration.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(StudentUpdation.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error occurred while updating student record: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
     
-    private boolean insertStudentData() throws SQLException {
-        // Assuming you have all necessary data available from JTextFields
-        try{
-        StudentData AddStudentRecord = new StudentData();
-        
-        String fullName = jTextField_fullname.getText();
-        String username = jTextField_username.getText();
-        String gender = jRadioButton_male.isSelected() ? "Male" : "Female";
-        java.util.Date birthday = jDateChooser_birthDay.getDate();
-        String parentName = jTextField_parentName.getText();
-        String parentNIC = jTextField_nic.getText();
-        String parentPhone = jTextField_phone.getText();
-        String password = new String(jPasswordField_password.getPassword());
-        // Call the method to insert data into st_tb table
-        AddStudentRecord.registration(fullName, username, gender, birthday, parentName, parentNIC, parentPhone, password);
-        return true;
-        } catch (SQLException ex) {
-        ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error occurred while inserting student data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        return false;
+    
+    private void populateFields() {
+        if (studentData != null && studentData.length >= 4) {
+                 jLabel_studentID.setText(studentData[0]);
+                 jTextField_fullname.setText(studentData[1]);
     }
-     
-        
-  
+    }
+    
+    private boolean updateStudentRecord() throws SQLException {
+        // Retrieve the updated data from the input fields
+        String updatedName = jTextField_fullname.getText();
+        String updatedGender = jRadioButton_male.isSelected() ? "Male" : "Female";
+        java.util.Date updatedBirthday = jDateChooser_birthDay.getDate();
+        String updatedParentName = jTextField_parentName.getText();
+        String updatedParentNIC = jTextField_nic.getText();
+        String updatedParentPhone = jTextField_phone.getText();
+        String updatedPassword = new String(jPasswordField_password.getPassword());
+
+
+        // Perform validation if needed
+
+        // Update the student record in the database (implement this)
+        StudentData studentData = new StudentData();
+        boolean success = studentData.updateStudentRecord(jLabel_studentID.getText(), updatedName, updatedGender, updatedBirthday, updatedParentName, updatedParentNIC, updatedParentPhone, updatedPassword);
+        if (!success) {
+            return false;
+        }
+
+        return true;
+    }
 
     private boolean isFormFullyFilled() {
         return !jTextField_fullname.getText().isEmpty() &&
@@ -468,11 +446,28 @@ private void reset() {
                !jTextField_phone.getText().isEmpty() &&
                !new String(jPasswordField_password.getPassword()).isEmpty() &&
                !new String(jPasswordField_confirmpassword.getPassword()).isEmpty();
-       
+    }
+    private void reset() {                                              
+            // TODO add your handling code here:
 
-       
-    }//GEN-LAST:event_jButton_login1ActionPerformed
-    public static boolean isValidPhoneNumber(String phoneNumber) {
+           jTextField_fullname.setText("");
+           jTextField_username.setText("");
+           jTextField_phone.setText("");
+           jTextField_parentName.setText("");
+           jTextField_nic.setText("");
+           jPasswordField_password.setText("");
+           jPasswordField_confirmpassword.setText("");
+           jDateChooser_birthDay.setDate(null); // Clear JCalendar
+
+           ButtonGroup buttonGroup = new ButtonGroup();
+           buttonGroup.add(jRadioButton_male);
+           buttonGroup.add(jRadioButton_female);
+           buttonGroup.clearSelection(); // Clear radio buttons
+
+
+        
+    }//GEN-LAST:event_jButton_updateActionPerformed
+   public static boolean isValidPhoneNumber(String phoneNumber) {
         // Regular expression to match a 10-digit phone number
         String regex = "\\d{10}";
 
@@ -493,10 +488,6 @@ private void reset() {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton_femaleActionPerformed
 
-    private void jTextField_nicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_nicActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_nicActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -514,14 +505,18 @@ private void reset() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentUpdation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentUpdation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentUpdation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentUpdation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -530,14 +525,16 @@ private void reset() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentRegistration().setVisible(true);
+                String[] studentData = {"1", "John Doe", "username", "Male", "2000-01-01"};
+                StudentUpdation updateForm = new StudentUpdation(studentData);
+                updateForm.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_login;
-    private javax.swing.JButton jButton_login1;
+    private javax.swing.JButton jButton_update;
     private com.toedter.calendar.JDateChooser jDateChooser_birthDay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -553,6 +550,7 @@ private void reset() {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_Selection;
+    private javax.swing.JLabel jLabel_studentID;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

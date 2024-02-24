@@ -13,7 +13,7 @@ import java.sql.Statement;
  *
  * @author Pramuda
  */
-public class dBConnection {
+public class DBConnection {
     static Connection conn;
     static Statement stat = null;
  

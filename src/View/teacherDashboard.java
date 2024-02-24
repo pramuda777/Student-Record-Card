@@ -5,19 +5,26 @@
  */
 package View;
 
+import Model.StudentData;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author Pramuda Heshan
  */
-public class teacherDashboard extends javax.swing.JFrame {
+public class TeacherDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form teacherDashboard
      */
-    public teacherDashboard() {
+    public TeacherDashboard() {
         initComponents();
+        populateStudentDataTable();
     }
 
     /**
@@ -35,7 +42,6 @@ public class teacherDashboard extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -48,13 +54,43 @@ public class teacherDashboard extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         dashboard = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jPanel1_avgChart = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        rSTableMetro1 = new rojerusan.RSTableMetro();
-        jPanel10 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        studuntDataTable = new rojerusan.RSTableMetro();
         jPanel11 = new javax.swing.JPanel();
+        jButton_addMarks = new javax.swing.JButton();
+        jButton_removeMarks = new javax.swing.JButton();
+        jButton_updateMarks = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        studuntMarksTable = new rojerusan.RSTableMetro();
+        jButton_refreshMarks = new javax.swing.JButton();
+        studentID1 = new javax.swing.JTextField();
+        studentID2 = new javax.swing.JTextField();
+        studentID3 = new javax.swing.JTextField();
+        studentID4 = new javax.swing.JTextField();
+        studentID5 = new javax.swing.JTextField();
+        studentID6 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        studentID7 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jButton_refreshMarks1 = new javax.swing.JButton();
+        jPanel15 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -116,21 +152,6 @@ public class teacherDashboard extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(22, 103, 183));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setBackground(new java.awt.Color(22, 103, 183));
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Subjects");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.setVerifyInputWhenFocusTarget(false);
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel7MousePressed(evt);
-            }
-        });
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 170, 40));
-
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, -1));
 
         jPanel6.setBackground(new java.awt.Color(22, 103, 183));
@@ -150,7 +171,7 @@ public class teacherDashboard extends javax.swing.JFrame {
         });
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 170, 40));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 200, -1));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, -1));
 
         jPanel8.setBackground(new java.awt.Color(22, 103, 183));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -167,9 +188,9 @@ public class teacherDashboard extends javax.swing.JFrame {
                 jLabel9MousePressed(evt);
             }
         });
-        jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
+        jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 40, 40));
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 60, 60));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 530));
 
@@ -223,33 +244,256 @@ public class teacherDashboard extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(33, 150, 243));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel19.setText("Average marks for each subjects ");
+        jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+
+        jPanel1_avgChart.setBackground(new java.awt.Color(22, 103, 183));
+        jPanel9.add(jPanel1_avgChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 670, 460));
+
         dashboard.addTab("tab2", jPanel9);
 
         jPanel7.setBackground(new java.awt.Color(33, 150, 243));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
-        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, -1, -1));
+        jButton1.setBackground(new java.awt.Color(22, 103, 183));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Add Student");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 160, 40));
 
-        rSTableMetro1.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        rSTableMetro1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(rSTableMetro1);
-        rSTableMetro1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jButton2.setBackground(new java.awt.Color(22, 103, 183));
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Delete Student");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 160, 40));
 
-        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 570, 400));
+        jButton3.setBackground(new java.awt.Color(22, 103, 183));
+        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Update Student");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 160, 40));
+
+        jButton4.setBackground(new java.awt.Color(22, 103, 183));
+        jButton4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Refresh");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 160, 40));
+
+        studuntDataTable.setBackground(new java.awt.Color(22, 103, 183));
+        studuntDataTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+
+        ));
+        studuntDataTable.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        studuntDataTable.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
+        studuntDataTable.setFuenteFilas(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
+        studuntDataTable.setFuenteFilasSelect(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
+        studuntDataTable.setFuenteHead(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        studuntDataTable.setGridColor(new java.awt.Color(0, 112, 192));
+        studuntDataTable.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane2.setViewportView(studuntDataTable);
+
+        jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 570, 460));
 
         dashboard.addTab("tab1", jPanel7);
 
-        jPanel10.setBackground(new java.awt.Color(33, 150, 243));
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        dashboard.addTab("tab3", jPanel10);
-
         jPanel11.setBackground(new java.awt.Color(33, 150, 243));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton_addMarks.setBackground(new java.awt.Color(22, 103, 183));
+        jButton_addMarks.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton_addMarks.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_addMarks.setText("Add Marks");
+        jButton_addMarks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_addMarksActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton_addMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, 40));
+
+        jButton_removeMarks.setBackground(new java.awt.Color(22, 103, 183));
+        jButton_removeMarks.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton_removeMarks.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_removeMarks.setText("Remove Marks");
+        jButton_removeMarks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_removeMarksActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton_removeMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 130, 40));
+
+        jButton_updateMarks.setBackground(new java.awt.Color(22, 103, 183));
+        jButton_updateMarks.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton_updateMarks.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_updateMarks.setText("Update Marks");
+        jButton_updateMarks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_updateMarksActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton_updateMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 130, 40));
+
+        studuntMarksTable.setBackground(new java.awt.Color(22, 103, 183));
+        studuntMarksTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        studuntMarksTable.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        studuntMarksTable.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
+        studuntMarksTable.setFuenteFilas(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
+        studuntMarksTable.setFuenteFilasSelect(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
+        studuntMarksTable.setFuenteHead(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jScrollPane3.setViewportView(studuntMarksTable);
+
+        jPanel11.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 440, 430));
+
+        jButton_refreshMarks.setBackground(new java.awt.Color(22, 103, 183));
+        jButton_refreshMarks.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton_refreshMarks.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_refreshMarks.setText("Refresh");
+        jButton_refreshMarks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_refreshMarksActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton_refreshMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 130, 40));
+
+        studentID1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jPanel11.add(studentID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 120, 20));
+
+        studentID2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jPanel11.add(studentID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 310, 120, 20));
+
+        studentID3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jPanel11.add(studentID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 120, 20));
+
+        studentID4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jPanel11.add(studentID4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 120, 20));
+
+        studentID5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jPanel11.add(studentID5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 120, 20));
+
+        studentID6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jPanel11.add(studentID6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 120, 20));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Health");
+        jPanel11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 80, -1));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("Enter a student marks");
+        jPanel11.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 250, 20));
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("Maths");
+        jPanel11.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 70, -1));
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("Science");
+        jPanel11.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 80, -1));
+
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel15.setText("History");
+        jPanel11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 80, -1));
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel16.setText("English");
+        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 80, -1));
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel17.setText("Religion");
+        jPanel11.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 80, -1));
+
+        studentID7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jPanel11.add(studentID7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 120, 20));
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel18.setText("Student ID");
+        jPanel11.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 100, 20));
+
         dashboard.addTab("tab4", jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(33, 150, 243));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jPanel12.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 340, 350));
+
+        jLabel21.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Students Feedback");
+        jPanel12.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Parents Feedback");
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jButton_refreshMarks1.setBackground(new java.awt.Color(22, 103, 183));
+        jButton_refreshMarks1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jButton_refreshMarks1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_refreshMarks1.setText("Reply");
+        jButton_refreshMarks1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_refreshMarks1ActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jButton_refreshMarks1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 120, 40));
+
+        jPanel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jPanel12.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 340, 350));
+
         dashboard.addTab("tab5", jPanel12);
 
         getContentPane().add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 800, 560));
@@ -258,6 +502,8 @@ public class teacherDashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    Statement stmt;
+    
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
         dashboard.setSelectedIndex(0);
@@ -268,20 +514,21 @@ public class teacherDashboard extends javax.swing.JFrame {
         jPanel8.setBackground(new Color(22,103,183));
         
     }//GEN-LAST:event_jLabel1MousePressed
+private void populateStudentDataTable() {
+        try {
+            StudentData studentData = new StudentData();
+            studentData.populateStudentData();
 
-    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
-        // TODO add your handling code here:
-        dashboard.setSelectedIndex(2);
-        jPanel3.setBackground(new Color(22,103,183));
-        jPanel4.setBackground(new Color(22,103,183));
-        jPanel5.setBackground(new Color(33,150,243));
-        jPanel6.setBackground(new Color(22,103,183));
-        jPanel8.setBackground(new Color(22,103,183));
-    }//GEN-LAST:event_jLabel7MousePressed
-
+            DefaultTableModel model = studentData.populateStudentData();
+            studuntDataTable.setModel(model);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
         // TODO add your handling code here:
-        dashboard.setSelectedIndex(3);
+        dashboard.setSelectedIndex(2);
         jPanel3.setBackground(new Color(22,103,183));
         jPanel4.setBackground(new Color(22,103,183));
         jPanel5.setBackground(new Color(22,103,183));
@@ -291,7 +538,7 @@ public class teacherDashboard extends javax.swing.JFrame {
 
     private void jLabel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MousePressed
         // TODO add your handling code here:
-        dashboard.setSelectedIndex(4);
+        dashboard.setSelectedIndex(3);
         jPanel3.setBackground(new Color(22,103,183));
         jPanel4.setBackground(new Color(22,103,183));
         jPanel5.setBackground(new Color(22,103,183));
@@ -332,6 +579,88 @@ public class teacherDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dashboardMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new StudentRegistration().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        deleteSelectedStudentRecord();
+
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        updateSelectedStudentRecord();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        populateStudentDataTable();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton_addMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addMarksActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_addMarksActionPerformed
+
+    private void jButton_removeMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_removeMarksActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_removeMarksActionPerformed
+
+    private void jButton_updateMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_updateMarksActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_updateMarksActionPerformed
+
+    private void jButton_refreshMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_refreshMarksActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_refreshMarksActionPerformed
+
+    private void jButton_refreshMarks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_refreshMarks1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_refreshMarks1ActionPerformed
+    private void deleteSelectedStudentRecord() {
+        // Get the selected row index
+        int selectedRow = studuntDataTable.getSelectedRow();
+
+        // Check if a row is selected
+        if (selectedRow == -1) {
+            // If no row is selected, display a message to the user
+            JOptionPane.showMessageDialog(null, "Please select a row to delete.");
+        } else {
+            // If a row is selected, proceed with deletion
+            // Call the method to delete the selected student record
+            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                // Create an instance of StudentData
+                StudentData studentData = new StudentData();
+                // Call the deleteStudentRecord method passing the selected row index
+                studentData.deleteStudentRecord(selectedRow);
+                // Refresh the table data after deletion
+                populateStudentDataTable();
+            }
+        }
+    }
+
+    private void updateSelectedStudentRecord() {
+        int selectedRow = studuntDataTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a row to update.");
+        } else {
+            // Get the data of the selected row
+            DefaultTableModel model = (DefaultTableModel) studuntDataTable.getModel();
+            String[] rowData = new String[model.getColumnCount()];
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                rowData[i] = model.getValueAt(selectedRow, i).toString();
+            }
+
+            // Open the update form and pass the data
+            StudentUpdation updateForm = new StudentUpdation(rowData);
+            updateForm.setVisible(true);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -349,21 +678,22 @@ public class teacherDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(teacherDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(teacherDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(teacherDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(teacherDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new teacherDashboard().setVisible(true);
+                new TeacherDashboard().setVisible(true);
             }
         });
     }
@@ -371,20 +701,40 @@ public class teacherDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane dashboard;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton_addMarks;
+    private javax.swing.JButton jButton_refreshMarks;
+    private javax.swing.JButton jButton_refreshMarks1;
+    private javax.swing.JButton jButton_removeMarks;
+    private javax.swing.JButton jButton_updateMarks;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel1_avgChart;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -393,7 +743,16 @@ public class teacherDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private rojerusan.RSTableMetro rSTableMetro1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField studentID1;
+    private javax.swing.JTextField studentID2;
+    private javax.swing.JTextField studentID3;
+    private javax.swing.JTextField studentID4;
+    private javax.swing.JTextField studentID5;
+    private javax.swing.JTextField studentID6;
+    private javax.swing.JTextField studentID7;
+    private rojerusan.RSTableMetro studuntDataTable;
+    private rojerusan.RSTableMetro studuntMarksTable;
     // End of variables declaration//GEN-END:variables
 }

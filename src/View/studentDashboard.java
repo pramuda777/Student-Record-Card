@@ -11,12 +11,12 @@ import java.awt.Color;
  *
  * @author Pramuda Heshan
  */
-public class studentDashboard extends javax.swing.JFrame {
+public class StudentDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form teacherDashboard
      */
-    public studentDashboard() {
+    public StudentDashboard() {
         initComponents();
     }
 
@@ -29,13 +29,12 @@ public class studentDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox3 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -47,11 +46,31 @@ public class studentDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         dashboard = new javax.swing.JTabbedPane();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
-        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel1_chart = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea_studentFeedback = new javax.swing.JTextArea();
+        jButton_feedbackSubmit = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rSTableMetro1 = new rojerusan.RSTableMetro();
+        jPanel10 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        rSTableMetro_studentFeedback = new rojerusan.RSTableMetro();
+        jLabel13 = new javax.swing.JLabel();
+
+        jCheckBox3.setText("jCheckBox3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -94,40 +113,10 @@ public class studentDashboard extends javax.swing.JFrame {
             }
         });
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setBackground(new java.awt.Color(22, 103, 183));
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Students");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel6.setVerifyInputWhenFocusTarget(false);
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel6MousePressed(evt);
-            }
-        });
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 170, 40));
-
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 200, -1));
 
         jPanel5.setBackground(new java.awt.Color(22, 103, 183));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setBackground(new java.awt.Color(22, 103, 183));
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Subjects");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.setVerifyInputWhenFocusTarget(false);
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel7MousePressed(evt);
-            }
-        });
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 170, 40));
-
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, -1));
 
         jPanel6.setBackground(new java.awt.Color(22, 103, 183));
@@ -147,7 +136,7 @@ public class studentDashboard extends javax.swing.JFrame {
         });
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 170, 40));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 200, -1));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 200, -1));
 
         jPanel8.setBackground(new java.awt.Color(22, 103, 183));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -164,9 +153,9 @@ public class studentDashboard extends javax.swing.JFrame {
                 jLabel9MousePressed(evt);
             }
         });
-        jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
+        jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 40, 40));
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 60, 60));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 530));
 
@@ -194,7 +183,7 @@ public class studentDashboard extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(33, 150, 243));
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(33, 150, 243));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Student Record Card");
         jLabel5.setVerifyInputWhenFocusTarget(false);
@@ -217,21 +206,140 @@ public class studentDashboard extends javax.swing.JFrame {
                 dashboardMouseClicked(evt);
             }
         });
-        dashboard.addTab("tab1", null, jTabbedPane1, "");
-        dashboard.addTab("tab2", jTabbedPane2);
-        dashboard.addTab("tab3", jTabbedPane3);
-        dashboard.addTab("tab4", jTabbedPane4);
-        dashboard.addTab("tab5", jTabbedPane5);
 
-        getContentPane().add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 800, 590));
+        jPanel9.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1_chart.setBackground(new java.awt.Color(22, 103, 183));
+        jPanel9.add(jPanel1_chart, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 650, 450));
+
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel19.setText("Marks for each subjects ");
+        jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+
+        dashboard.addTab("tab2", jPanel9);
+
+        jPanel7.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel12.setBackground(new java.awt.Color(22, 103, 183));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jCheckBox7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jCheckBox7.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox7.setText("Health");
+        jPanel12.add(jCheckBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
+
+        jCheckBox6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jCheckBox6.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox6.setText("Religion");
+        jPanel12.add(jCheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
+
+        jCheckBox4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox4.setText("History");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+
+        jCheckBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("Maths");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+
+        jCheckBox5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jCheckBox5.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox5.setText("English");
+        jPanel12.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        jCheckBox2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox2.setText("Science");
+        jPanel12.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Type your feedback");
+        jPanel12.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, 40));
+
+        jTextArea_studentFeedback.setColumns(20);
+        jTextArea_studentFeedback.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
+        jTextArea_studentFeedback.setRows(5);
+        jScrollPane2.setViewportView(jTextArea_studentFeedback);
+
+        jPanel12.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 250, 120));
+
+        jButton_feedbackSubmit.setBackground(new java.awt.Color(33, 150, 243));
+        jButton_feedbackSubmit.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton_feedbackSubmit.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_feedbackSubmit.setText("Submit");
+        jButton_feedbackSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_feedbackSubmitActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jButton_feedbackSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 120, 40));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Subject Challenge Submission");
+        jPanel12.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Select the challenging subjects");
+        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, 40));
+
+        jPanel7.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 400, 500));
+
+        rSTableMetro1.setBackground(new java.awt.Color(22, 103, 183));
+        jScrollPane1.setViewportView(rSTableMetro1);
+
+        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 320, 440));
+
+        dashboard.addTab("tab1", jPanel7);
+
+        jPanel10.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSTableMetro_studentFeedback.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Friend Name", "Challenges"
+            }
+        ));
+        rSTableMetro_studentFeedback.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setViewportView(rSTableMetro_studentFeedback);
+
+        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 62, -1, 420));
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Friends Challenges");
+        jPanel10.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+
+        dashboard.addTab("tab3", jPanel10);
+
+        getContentPane().add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 800, 560));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dashboardMouseClicked
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
@@ -244,19 +352,9 @@ public class studentDashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel1MousePressed
 
-    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
-        // TODO add your handling code here:
-        dashboard.setSelectedIndex(2);
-        jPanel3.setBackground(new Color(22,103,183));
-        jPanel4.setBackground(new Color(22,103,183));
-        jPanel5.setBackground(new Color(33,150,243));
-        jPanel6.setBackground(new Color(22,103,183));
-        jPanel8.setBackground(new Color(22,103,183));
-    }//GEN-LAST:event_jLabel7MousePressed
-
     private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
         // TODO add your handling code here:
-        dashboard.setSelectedIndex(3);
+        dashboard.setSelectedIndex(1);
         jPanel3.setBackground(new Color(22,103,183));
         jPanel4.setBackground(new Color(22,103,183));
         jPanel5.setBackground(new Color(22,103,183));
@@ -266,23 +364,13 @@ public class studentDashboard extends javax.swing.JFrame {
 
     private void jLabel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MousePressed
         // TODO add your handling code here:
-        dashboard.setSelectedIndex(4);
+        dashboard.setSelectedIndex(2);
         jPanel3.setBackground(new Color(22,103,183));
         jPanel4.setBackground(new Color(22,103,183));
         jPanel5.setBackground(new Color(22,103,183));
         jPanel6.setBackground(new Color(22,103,183));
         jPanel8.setBackground(new Color(33,150,243));
     }//GEN-LAST:event_jLabel9MousePressed
-
-    private void jLabel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MousePressed
-        // TODO add your handling code here:
-        dashboard.setSelectedIndex(1);
-        jPanel3.setBackground(new Color(22,103,183));
-        jPanel4.setBackground(new Color(33,150,243));
-        jPanel5.setBackground(new Color(22,103,183));
-        jPanel6.setBackground(new Color(22,103,183));
-        jPanel8.setBackground(new Color(22,103,183));
-    }//GEN-LAST:event_jLabel6MousePressed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
 
@@ -303,6 +391,22 @@ public class studentDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jLabel10MousePressed
 
+    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dashboardMouseClicked
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jButton_feedbackSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_feedbackSubmitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_feedbackSubmitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -320,14 +424,16 @@ public class studentDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(studentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(studentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(studentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(studentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -335,34 +441,51 @@ public class studentDashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new studentDashboard().setVisible(true);
+                new StudentDashboard().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane dashboard;
+    private javax.swing.JButton jButton_feedbackSubmit;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel1_chart;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea_studentFeedback;
+    private rojerusan.RSTableMetro rSTableMetro1;
+    private rojerusan.RSTableMetro rSTableMetro_studentFeedback;
     // End of variables declaration//GEN-END:variables
 }

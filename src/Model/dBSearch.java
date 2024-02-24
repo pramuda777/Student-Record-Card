@@ -12,13 +12,13 @@ import java.sql.Statement;
  *
  * @author Pramuda Heshan
  */
-public class dBSearch {
+public class DBSearch {
     Statement stmt;
     ResultSet rs;
     
     public ResultSet searchLogin(String role,String usName) {
         try {
-           stmt = dBConnection.getStatementConnection();
+           stmt = DBConnection.getStatementConnection();
            String userName = usName;
            
        //Execute the Query
@@ -44,7 +44,7 @@ public class dBSearch {
 
     public ResultSet searchStudents(){
     try{
-       stmt = dBConnection.getStatementConnection();
+       stmt = DBConnection.getStatementConnection();
        rs = stmt.executeQuery("SELECT * FROM students");
     }catch(Exception e){
            e.printStackTrace();

@@ -1,7 +1,7 @@
 package View;
 
 
-import Controller.loginController;
+import Controller.LoginController;
 import java.awt.Color;
 import java.awt.Frame;
 import javax.swing.border.Border;
@@ -17,12 +17,12 @@ import javax.swing.BorderFactory;
  *
  * @author sachi
  */
-public class userLogin extends javax.swing.JFrame {
+public class UserLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form Login2
      */
-    public userLogin() {
+    public UserLogin() {
         initComponents();
         // center the form
         this.setLocationRelativeTo(null);
@@ -305,7 +305,7 @@ public class userLogin extends javax.swing.JFrame {
 
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
         // TODO add your handling code here:
-        loginController.login(jComboBox_role.getSelectedItem().toString(),jTextField_username.getText(), jPasswordField.getText());
+        LoginController.login(jComboBox_role.getSelectedItem().toString(),jTextField_username.getText(), jPasswordField.getText());
     }//GEN-LAST:event_jButton_loginActionPerformed
 
     /**
@@ -325,21 +325,23 @@ public class userLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(userLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(userLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(userLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(userLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new userLogin().setVisible(true);
+                new UserLogin().setVisible(true);
             }
         });
     }

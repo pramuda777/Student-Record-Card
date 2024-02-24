@@ -10,11 +10,12 @@ package Controller;
  * @author Pramuda
  */
 
-import Model.dBConnection;
-import Model.dBSearch;
-import View.studentDashboard;
-import View.teacherDashboard;
-import View.userLogin;
+import Model.DBConnection;
+import Model.DBSearch;
+import View.ParentDashboard;
+import View.StudentDashboard;
+import View.TeacherDashboard;
+import View.UserLogin;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -22,14 +23,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
-public class loginController {
+public class LoginController {
     public static void login(String role, String usName, String pass) {
  try {
      
     String username = null; // initial value of the username
     String password = null; // initial value of the password
     
-    ResultSet rs = new dBSearch().searchLogin(role,usName);
+    ResultSet rs = new DBSearch().searchLogin(role,usName);
 //Process the Query
     while (rs.next()) {
     username = rs.getString("name"); //assign database login name to the variable
@@ -38,12 +39,14 @@ public class loginController {
     if (username != null && password != null) {
         if (password.equals(pass)) {
             System.out.println("Login Successfull");
-            userLogin.getFrames()[0].dispose();
+            UserLogin.getFrames()[0].dispose();
+            
             if("Teacher".equals(role)){
-                new teacherDashboard().setVisible(true);
-            }
-            else{
-                new studentDashboard().setVisible(true);
+                new TeacherDashboard().setVisible(true);
+            }else if("Student".equals(role)){
+                new StudentDashboard().setVisible(true);
+            }else{
+                new ParentDashboard().setVisible(true);
             }
         } else {
            JOptionPane.showMessageDialog(null, "Please check the credentials", "Error", JOptionPane.ERROR_MESSAGE);
@@ -52,10 +55,10 @@ public class loginController {
        JOptionPane.showMessageDialog(null, "Please check the Credentials", "Error", JOptionPane.ERROR_MESSAGE);
     }
     
-    dBConnection.closeCon();
+    DBConnection.closeCon();
     
     } catch (SQLException ex) { 
-       Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
+       Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
     }
     }
 }
