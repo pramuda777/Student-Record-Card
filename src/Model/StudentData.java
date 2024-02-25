@@ -175,7 +175,37 @@ public class StudentData {
         }
         return success;
     }
-    }    
+       public String getStudentIdFromDatabase(String username) throws SQLException {
+        String studentId = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            stmt = DBConnection.getStatementConnection();
+            String sql = "SELECT std_id FROM std_tb WHERE name = ?";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                studentId = resultSet.getString("std_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources in the finally block
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return studentId;
+    
+    }
+}    
     
     
     

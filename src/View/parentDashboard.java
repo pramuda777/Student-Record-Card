@@ -49,7 +49,7 @@ public class ParentDashboard extends javax.swing.JFrame {
         jPanel1_chart = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        rSTableMetro1 = new rojerusan.RSTableMetro();
+        rSTableMetro_childMarks = new rojerusan.RSTableMetro();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -195,8 +195,8 @@ public class ParentDashboard extends javax.swing.JFrame {
         jLabel19.setText("Graphicle View ");
         jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, -1, -1));
 
-        rSTableMetro1.setBackground(new java.awt.Color(22, 103, 183));
-        jScrollPane1.setViewportView(rSTableMetro1);
+        rSTableMetro_childMarks.setBackground(new java.awt.Color(22, 103, 183));
+        jScrollPane1.setViewportView(rSTableMetro_childMarks);
 
         jPanel9.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 320, 440));
 
@@ -239,7 +239,7 @@ public class ParentDashboard extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Teacher's Feedback");
-        jPanel13.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 170, -1));
+        jPanel13.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 170, -1));
 
         jTextArea_teacherFeedback.setEditable(false);
         jTextArea_teacherFeedback.setColumns(20);
@@ -247,9 +247,9 @@ public class ParentDashboard extends javax.swing.JFrame {
         jTextArea_teacherFeedback.setRows(5);
         jScrollPane3.setViewportView(jTextArea_teacherFeedback);
 
-        jPanel13.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 260, 100));
+        jPanel13.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 250, 100));
 
-        jPanel10.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 360, 170));
+        jPanel10.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 370, 170));
 
         dashboard.addTab("tab3", jPanel10);
 
@@ -259,6 +259,19 @@ public class ParentDashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+//    private static void displayParentDashboard(String parentUsername) {
+//    // Retrieve associated student IDs for the parent
+//    String[] studentIds = getStudentIdsForParent(parentUsername);
+//
+//    // Display marks for each student
+//        for (String studentId : studentIds) {
+//            displayStudentMarksForParent(studentId);
+//        }
+//
+//        // Show parent dashboard
+//        new ParentDashboard().setVisible(true);
+//    }
+    
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
         dashboard.setSelectedIndex(0);
@@ -381,6 +394,6 @@ public class ParentDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea_parentFeedback;
     private javax.swing.JTextArea jTextArea_teacherFeedback;
-    private rojerusan.RSTableMetro rSTableMetro1;
+    private rojerusan.RSTableMetro rSTableMetro_childMarks;
     // End of variables declaration//GEN-END:variables
 }

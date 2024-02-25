@@ -69,6 +69,7 @@ public class StudentUpdation extends javax.swing.JFrame {
         jLabel_Selection = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel_studentID = new javax.swing.JLabel();
+        jLabel_studentID1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jTextField_username = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -130,8 +131,12 @@ public class StudentUpdation extends javax.swing.JFrame {
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jLabel_studentID.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_studentID.setText("ID");
-        jPanel4.add(jLabel_studentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, -1, -1));
+        jLabel_studentID.setText("#");
+        jPanel4.add(jLabel_studentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
+
+        jLabel_studentID1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_studentID1.setText("StudentID :");
+        jPanel4.add(jLabel_studentID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 150));
 
@@ -551,6 +556,7 @@ public class StudentUpdation extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_Selection;
     private javax.swing.JLabel jLabel_studentID;
+    private javax.swing.JLabel jLabel_studentID1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

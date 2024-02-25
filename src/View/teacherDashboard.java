@@ -5,11 +5,20 @@
  */
 package View;
 
+import Controller.MarksController;
+import Model.ChartGenerator;
+import Model.MarksData;
 import Model.StudentData;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -25,6 +34,39 @@ public class TeacherDashboard extends javax.swing.JFrame {
     public TeacherDashboard() {
         initComponents();
         populateStudentDataTable();
+        displayStudentMarksTable();
+        ChartGenerator.displayAverageMarksChart(jPanel1_avgChart);
+        
+        studuntMarksTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            // Check if the row selection is adjusting
+            if (!e.getValueIsAdjusting()) {
+                int selectedRow = studuntMarksTable.getSelectedRow();
+                if (selectedRow != -1) { // If a row is selected
+                    // Get the data from the selected row
+                    String studentId = studuntMarksTable.getValueAt(selectedRow, 0).toString();
+                    int maths = Integer.parseInt(studuntMarksTable.getValueAt(selectedRow, 2).toString());
+                    int science = Integer.parseInt(studuntMarksTable.getValueAt(selectedRow, 3).toString());
+                    int history = Integer.parseInt(studuntMarksTable.getValueAt(selectedRow, 4).toString());
+                    int english = Integer.parseInt(studuntMarksTable.getValueAt(selectedRow, 5).toString());
+                    int religion = Integer.parseInt(studuntMarksTable.getValueAt(selectedRow, 6).toString());
+                    int health = Integer.parseInt(studuntMarksTable.getValueAt(selectedRow, 7).toString());
+
+                    // Set the values to the JText fields
+                    JText_studentID.setText(studentId);
+                    JText_maths.setText(String.valueOf(maths));
+                    JText_science.setText(String.valueOf(science));
+                    JText_history.setText(String.valueOf(history));
+                    JText_english.setText(String.valueOf(english));
+                    JText_religion.setText(String.valueOf(religion));
+                    JText_health.setText(String.valueOf(health));
+                }
+            }
+        }
+});
+        
+        
     }
 
     /**
@@ -54,7 +96,6 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         dashboard = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
         jPanel1_avgChart = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -69,13 +110,12 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jButton_updateMarks = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         studuntMarksTable = new rojerusan.RSTableMetro();
-        jButton_refreshMarks = new javax.swing.JButton();
-        studentID1 = new javax.swing.JTextField();
-        studentID2 = new javax.swing.JTextField();
-        studentID3 = new javax.swing.JTextField();
-        studentID4 = new javax.swing.JTextField();
-        studentID5 = new javax.swing.JTextField();
-        studentID6 = new javax.swing.JTextField();
+        JText_studentID = new javax.swing.JTextField();
+        JText_health = new javax.swing.JTextField();
+        JText_religion = new javax.swing.JTextField();
+        JText_history = new javax.swing.JTextField();
+        JText_science = new javax.swing.JTextField();
+        JText_english = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -83,7 +123,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        studentID7 = new javax.swing.JTextField();
+        JText_maths = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -245,14 +285,8 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(33, 150, 243));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel19.setText("Average marks for each subjects ");
-        jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
-
         jPanel1_avgChart.setBackground(new java.awt.Color(22, 103, 183));
-        jPanel9.add(jPanel1_avgChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 670, 460));
+        jPanel9.add(jPanel1_avgChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 670, 480));
 
         dashboard.addTab("tab2", jPanel9);
 
@@ -338,7 +372,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 jButton_addMarksActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton_addMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, 40));
+        jPanel11.add(jButton_addMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 130, 40));
 
         jButton_removeMarks.setBackground(new java.awt.Color(22, 103, 183));
         jButton_removeMarks.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -349,7 +383,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 jButton_removeMarksActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton_removeMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 130, 40));
+        jPanel11.add(jButton_removeMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, 130, 40));
 
         jButton_updateMarks.setBackground(new java.awt.Color(22, 103, 183));
         jButton_updateMarks.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -360,7 +394,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 jButton_updateMarksActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton_updateMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 130, 40));
+        jPanel11.add(jButton_updateMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 130, 40));
 
         studuntMarksTable.setBackground(new java.awt.Color(22, 103, 183));
         studuntMarksTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -375,96 +409,86 @@ public class TeacherDashboard extends javax.swing.JFrame {
         studuntMarksTable.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
         studuntMarksTable.setFuenteFilas(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
         studuntMarksTable.setFuenteFilasSelect(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
-        studuntMarksTable.setFuenteHead(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        studuntMarksTable.setFuenteHead(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
         jScrollPane3.setViewportView(studuntMarksTable);
 
-        jPanel11.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 440, 430));
+        jPanel11.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 490, 430));
 
-        jButton_refreshMarks.setBackground(new java.awt.Color(22, 103, 183));
-        jButton_refreshMarks.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton_refreshMarks.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_refreshMarks.setText("Refresh");
-        jButton_refreshMarks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_refreshMarksActionPerformed(evt);
-            }
-        });
-        jPanel11.add(jButton_refreshMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 130, 40));
+        JText_studentID.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jPanel11.add(JText_studentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 120, 30));
 
-        studentID1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jPanel11.add(studentID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 120, 20));
+        JText_health.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jPanel11.add(JText_health, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 120, 30));
 
-        studentID2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jPanel11.add(studentID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 310, 120, 20));
+        JText_religion.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jPanel11.add(JText_religion, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, 120, 30));
 
-        studentID3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jPanel11.add(studentID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 120, 20));
+        JText_history.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jPanel11.add(JText_history, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, 120, 30));
 
-        studentID4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jPanel11.add(studentID4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 120, 20));
+        JText_science.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jPanel11.add(JText_science, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 160, 120, 30));
 
-        studentID5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jPanel11.add(studentID5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 120, 20));
-
-        studentID6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jPanel11.add(studentID6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 120, 20));
+        JText_english.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jPanel11.add(JText_english, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 120, 30));
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Health");
-        jPanel11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 80, -1));
+        jPanel11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 80, -1));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Enter a student marks");
-        jPanel11.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 250, 20));
+        jPanel11.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 250, 20));
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Maths");
-        jPanel11.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 70, -1));
+        jPanel11.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 70, -1));
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Science");
-        jPanel11.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 80, -1));
+        jPanel11.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 80, -1));
 
         jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("History");
-        jPanel11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 80, -1));
+        jPanel11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 80, -1));
 
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel16.setText("English");
-        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 80, -1));
+        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 80, -1));
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Religion");
-        jPanel11.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 80, -1));
+        jPanel11.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 80, -1));
 
-        studentID7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jPanel11.add(studentID7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 120, 20));
+        JText_maths.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jPanel11.add(JText_maths, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 120, 30));
 
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Student ID");
-        jPanel11.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 100, 20));
+        jPanel11.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 100, 20));
 
         dashboard.addTab("tab4", jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(33, 150, 243));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel13.setBackground(new java.awt.Color(22, 103, 183));
         jPanel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jPanel12.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 340, 350));
 
@@ -491,6 +515,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         });
         jPanel12.add(jButton_refreshMarks1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 120, 40));
 
+        jPanel15.setBackground(new java.awt.Color(22, 103, 183));
         jPanel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jPanel12.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 340, 350));
 
@@ -526,6 +551,42 @@ private void populateStudentDataTable() {
             e.printStackTrace();
         }
     }
+    private void displayStudentMarksTable() {
+    try {
+        // Retrieve all data from the student_marks table including student names
+        ResultSet resultSet = MarksData.getAllStudentMarks();
+
+        // Get column names from the ResultSet metadata
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        String[] columnNames = new String[columnCount];
+        for (int i = 0; i < columnCount; i++) {
+            columnNames[i] = metaData.getColumnLabel(i + 1); // Use getColumnLabel to retrieve alias names
+        }
+
+        // Create a DefaultTableModel with understandable column names
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+        // Populate table model with data from the ResultSet
+        while (resultSet.next()) {
+            Object[] row = new Object[columnCount];
+            for (int i = 0; i < columnCount; i++) {
+                row[i] = resultSet.getObject(i + 1);
+            }
+            model.addRow(row);
+        }
+
+        // Set the model for the studuntMarksTable (assuming studuntMarksTable is your JTable)
+        studuntMarksTable.setModel(model);
+
+        // Close the ResultSet after processing
+        resultSet.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Handle the exception (e.g., display an error message)
+    }
+}
+
     private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
         // TODO add your handling code here:
         dashboard.setSelectedIndex(2);
@@ -602,20 +663,118 @@ private void populateStudentDataTable() {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton_addMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addMarksActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_addMarksActionPerformed
+                                      
+                                            
+    // Get the input values from the text fields
+    String studentId = JText_studentID.getText();
+    String mathsText = JText_maths.getText();
+    String scienceText = JText_science.getText();
+    String historyText = JText_history.getText();
+    String englishText = JText_english.getText();
+    String religionText = JText_religion.getText();
+    String healthText = JText_health.getText();
+    
+    // Check if any of the text fields are empty
+    if (studentId.isEmpty() || mathsText.isEmpty() || scienceText.isEmpty() || historyText.isEmpty() || englishText.isEmpty() || religionText.isEmpty() || healthText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter values for all fields", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Validate if the input values are numeric for marks fields
+    try {
+        int mathsMarks = Integer.parseInt(mathsText);
+        int scienceMarks = Integer.parseInt(scienceText);
+        int historyMarks = Integer.parseInt(historyText);
+        int englishMarks = Integer.parseInt(englishText);
+        int religionMarks = Integer.parseInt(religionText);
+        int healthMarks = Integer.parseInt(healthText);
+        
+        // Call the addMarks method from the controller to add the marks for each subject
+        boolean success = MarksController.addMarks(studentId, mathsMarks, scienceMarks, historyMarks, englishMarks, religionMarks, healthMarks);
+        
+        // Check if marks were added successfully for each subject
+        if (success) {
+            // Display a success message or perform any other actions
+            JOptionPane.showMessageDialog(this, "Marks added successfully");
+            
+            displayStudentMarksTable();
+            clearInputFields();
+            // You can also update the view or clear the input fields here if needed
+        } else {
+            // Display an error message if marks couldn't be added for any subject
+            JOptionPane.showMessageDialog(this, "Failed to add marks", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException e) {
+        // Handle the case where one of the input values is not a valid number
+        JOptionPane.showMessageDialog(this, "Please enter valid numeric values for marks", "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
+
+    }//GEN-LAST:event_jButton_addMarksActionPerformed
+    private void clearInputFields() {
+        JText_studentID.setText("");
+        JText_maths.setText("");
+        JText_science.setText("");
+        JText_history.setText("");
+        JText_english.setText("");
+        JText_religion.setText("");
+        JText_health.setText("");
+    }
+    
     private void jButton_removeMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_removeMarksActionPerformed
         // TODO add your handling code here:
+ 
+        // Get the selected row index
+        int selectedRow = studuntMarksTable.getSelectedRow();
+        if (selectedRow != -1) { // If a row is selected
+            // Get the student ID from the selected row
+            String studentId = studuntMarksTable.getValueAt(selectedRow, 0).toString();
+            
+            // Remove the record from the database
+            boolean success = MarksController.deleteMarks(studentId);
+            if (success) {
+                // Record deleted successfully
+                JOptionPane.showMessageDialog(null, "Record deleted successfully");
+                clearInputFields();
+                // Refresh the table to reflect changes
+                displayStudentMarksTable();
+            } else {
+                // Failed to delete record
+                JOptionPane.showMessageDialog(null, "Failed to delete record", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            // No row selected
+            JOptionPane.showMessageDialog(null, "Please select a record to delete", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    
     }//GEN-LAST:event_jButton_removeMarksActionPerformed
 
     private void jButton_updateMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_updateMarksActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_updateMarksActionPerformed
 
-    private void jButton_refreshMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_refreshMarksActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_refreshMarksActionPerformed
+    // Retrieve edited values from the text fields
+    String studentId = JText_studentID.getText();
+    int maths = Integer.parseInt(JText_maths.getText());
+    int science = Integer.parseInt(JText_science.getText());
+    int history = Integer.parseInt(JText_history.getText());
+    int english = Integer.parseInt(JText_english.getText());
+    int religion = Integer.parseInt(JText_religion.getText());
+    int health = Integer.parseInt(JText_health.getText());
+
+    // Update the marks in the database
+    boolean success = MarksController.updateMarks(studentId, maths, science, history, english, religion, health);
+    if (success) {
+        // Marks updated successfully
+        JOptionPane.showMessageDialog(null, "Marks updated successfully");
+        // Refresh the table to reflect changes
+        displayStudentMarksTable();
+        clearInputFields();
+    } else {
+        // Failed to update marks
+        JOptionPane.showMessageDialog(null, "Failed to update marks", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    }//GEN-LAST:event_jButton_updateMarksActionPerformed
 
     private void jButton_refreshMarks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_refreshMarks1ActionPerformed
         // TODO add your handling code here:
@@ -642,6 +801,7 @@ private void populateStudentDataTable() {
             }
         }
     }
+    
 
     private void updateSelectedStudentRecord() {
         int selectedRow = studuntDataTable.getSelectedRow();
@@ -660,6 +820,8 @@ private void populateStudentDataTable() {
             updateForm.setVisible(true);
         }
     }
+    
+    
 
     /**
      * @param args the command line arguments
@@ -697,15 +859,23 @@ private void populateStudentDataTable() {
             }
         });
     }
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JText_english;
+    private javax.swing.JTextField JText_health;
+    private javax.swing.JTextField JText_history;
+    private javax.swing.JTextField JText_maths;
+    private javax.swing.JTextField JText_religion;
+    private javax.swing.JTextField JText_science;
+    private javax.swing.JTextField JText_studentID;
     private javax.swing.JTabbedPane dashboard;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton_addMarks;
-    private javax.swing.JButton jButton_refreshMarks;
     private javax.swing.JButton jButton_refreshMarks1;
     private javax.swing.JButton jButton_removeMarks;
     private javax.swing.JButton jButton_updateMarks;
@@ -719,7 +889,6 @@ private void populateStudentDataTable() {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -745,13 +914,6 @@ private void populateStudentDataTable() {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField studentID1;
-    private javax.swing.JTextField studentID2;
-    private javax.swing.JTextField studentID3;
-    private javax.swing.JTextField studentID4;
-    private javax.swing.JTextField studentID5;
-    private javax.swing.JTextField studentID6;
-    private javax.swing.JTextField studentID7;
     private rojerusan.RSTableMetro studuntDataTable;
     private rojerusan.RSTableMetro studuntMarksTable;
     // End of variables declaration//GEN-END:variables

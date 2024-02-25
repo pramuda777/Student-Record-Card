@@ -5,7 +5,17 @@
  */
 package View;
 
+import Model.MarksData;
+import Model.StudentChartGenerator2;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +28,10 @@ public class StudentDashboard extends javax.swing.JFrame {
      */
     public StudentDashboard() {
         initComponents();
+        //displayStudentMarks("std002");
+        
+        //chartGenerator.displayStudentMarks("std002");
+        
     }
 
     /**
@@ -47,8 +61,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         dashboard = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
-        jPanel1_chart = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        jPanel_studentMarksChart = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jCheckBox7 = new javax.swing.JCheckBox();
@@ -64,7 +77,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        rSTableMetro1 = new rojerusan.RSTableMetro();
+        rSTableMetro_studentMarkTable = new rojerusan.RSTableMetro();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         rSTableMetro_studentFeedback = new rojerusan.RSTableMetro();
@@ -210,14 +223,8 @@ public class StudentDashboard extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(33, 150, 243));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1_chart.setBackground(new java.awt.Color(22, 103, 183));
-        jPanel9.add(jPanel1_chart, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 650, 450));
-
-        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel19.setText("Marks for each subjects ");
-        jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+        jPanel_studentMarksChart.setBackground(new java.awt.Color(22, 103, 183));
+        jPanel9.add(jPanel_studentMarksChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 650, 470));
 
         dashboard.addTab("tab2", jPanel9);
 
@@ -302,8 +309,8 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jPanel7.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 400, 500));
 
-        rSTableMetro1.setBackground(new java.awt.Color(22, 103, 183));
-        jScrollPane1.setViewportView(rSTableMetro1);
+        rSTableMetro_studentMarkTable.setBackground(new java.awt.Color(22, 103, 183));
+        jScrollPane1.setViewportView(rSTableMetro_studentMarkTable);
 
         jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 320, 440));
 
@@ -314,19 +321,19 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         rSTableMetro_studentFeedback.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Friend Name", "Challenges"
+                "Friend Name", "Challenging Subjects", "Challenges"
             }
         ));
         rSTableMetro_studentFeedback.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         jScrollPane3.setViewportView(rSTableMetro_studentFeedback);
 
-        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 62, -1, 420));
+        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 62, 530, 420));
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -340,6 +347,64 @@ public class StudentDashboard extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+   
+        
+        public void displayStudentMarks(String studentId) {
+        try {
+            // Retrieve student marks data from the database
+            ResultSet resultSet = MarksData.getStudentMarks(studentId);
+
+            // Create column names for the table
+            String[] columnNames = {"Subject Name", "Marks"};
+
+            // Create a DefaultTableModel with two columns
+            DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+            // Mapping of column indices to subject names
+            HashMap<Integer, String> columnIndexToSubject = new HashMap<>();
+            columnIndexToSubject.put(2, "Maths");
+            columnIndexToSubject.put(3, "Science");
+            columnIndexToSubject.put(4, "History");
+            columnIndexToSubject.put(5, "English");
+            columnIndexToSubject.put(6, "Religion");
+            columnIndexToSubject.put(7, "Health");
+
+            // Populate table model with data from the ResultSet
+            while (resultSet.next()) {
+                // Iterate through the column index to subject name mapping
+                for (Map.Entry<Integer, String> entry : columnIndexToSubject.entrySet()) {
+                    // Retrieve subject name and marks for each subject
+                    String subjectName = entry.getValue();
+                    int marks = resultSet.getInt(entry.getKey());
+
+                    // Add subject name and marks as a row to the table model
+                    model.addRow(new Object[]{subjectName, marks});
+                }
+            }
+
+            // Set the model for the student marks table
+            rSTableMetro_studentMarkTable.setModel(model);
+
+            // Close the ResultSet after processing
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception (e.g., display an error message)
+        }
+
+    }
+    public JPanel getStudentMarksChartPanel() {
+        return jPanel_studentMarksChart;
+    }
+    
+    public JPanel getJPanel_studentMarksChart() {
+        return jPanel_studentMarksChart;
+    }
+
+    public JTable getRSTableMetro_studentMarkTable() {
+        return rSTableMetro_studentMarkTable;
+    }
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
@@ -461,7 +526,6 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -472,7 +536,6 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel1_chart;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -481,11 +544,12 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel_studentMarksChart;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea_studentFeedback;
-    private rojerusan.RSTableMetro rSTableMetro1;
     private rojerusan.RSTableMetro rSTableMetro_studentFeedback;
+    private rojerusan.RSTableMetro rSTableMetro_studentMarkTable;
     // End of variables declaration//GEN-END:variables
 }
